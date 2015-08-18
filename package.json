@@ -1,0 +1,34 @@
+{
+  "name": "exec-cmds",
+  "version": "0.1.0",
+  "description": "Executes a list of commands.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zkochan/exec-cmds.git"
+  },
+  "keywords": [
+    "exec",
+    "spawn",
+    "commands"
+  ],
+  "author": {
+    "name": "Zoltan Kochan",
+    "email": "zoltan.kochan@gmail.com",
+    "url": "http://kochan.io"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zkochan/exec-cmds/issues"
+  },
+  "homepage": "https://github.com/zkochan/exec-cmds#readme",
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  },
+  "dependencies": {
+    "chalk": "^1.1.0",
+    "cross-spawn": "^2.0.0",
+    "parse-spawn-args": "^1.0.2"
+  }
+}
