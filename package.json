@@ -1,6 +1,6 @@
 {
   "name": "exec-cmds",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Executes a list of commands.",
   "main": "index.js",
   "scripts": {},
