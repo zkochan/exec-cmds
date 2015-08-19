@@ -24,9 +24,7 @@ var cmds = [
   'mkdir foo',
   'rm -rf foo'
 ];
-execCmds(cmds, cwd, function() {
-  console.log('Ready!');
-});
+execCmds(cmds, cwd);
 ```
 
 
