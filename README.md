@@ -24,7 +24,12 @@ var cmds = [
   'mkdir foo',
   'rm -rf foo'
 ];
-execCmds(cmds, cwd);
+execCmds(cmds, {
+  cwd: cwd,
+  env: {
+    FOO_BAR: 'Hello world!'
+  }
+});
 ```
 
 
