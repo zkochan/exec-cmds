@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Executes a list of commands.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zkochan/exec-cmds.git"
@@ -31,5 +33,9 @@
     "chalk": "^1.1.0",
     "cross-spawn": "^2.0.0",
     "parse-spawn-args": "^1.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
   }
 }

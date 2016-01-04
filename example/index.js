@@ -1,6 +1,6 @@
 'use strict';
 
-var execCmds = require('../');
+const execCmds = require('../');
 
 execCmds([
   'mkdir foo',
@@ -9,5 +9,5 @@ execCmds([
 ], {
   env: {
     FOO_BAR: 'Hello world!',
-  }
+  },
 });

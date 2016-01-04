@@ -1,16 +1,16 @@
 'use strict';
 
-var chalk = require('chalk');
-var spawn = require('cross-spawn');
-var parse = require('parse-spawn-args').parse;
+const chalk = require('chalk');
+const spawn = require('cross-spawn');
+const parse = require('parse-spawn-args').parse;
 
 function executeCommand(cmd, args, opts) {
   console.log(chalk.yellow('Executing: ') + cmd + ' ' + args.join(' '));
 
-  spawn.sync(cmd, args, {
+  return spawn.sync(cmd, args, {
     cwd: opts.cwd,
     env: opts.env || process.env,
-    stdio: 'inherit'
+    stdio: 'inherit',
   });
 }
 
@@ -29,17 +29,26 @@ function executeCommand(cmd, args, opts) {
 function exec(cmds, opts) {
   opts = opts || {};
 
-  if (cmds && cmds.length) {
-    var cmd = cmds.shift();
-    var parts = parse(cmd);
-    if (cmd.length > 0) {
-      executeCommand(parts[0], parts.splice(1), opts);
-      console.log(chalk.yellow('Finished: ') + cmd);
-      exec(cmds, opts);
-    }
+  if (!cmds || !cmds.length) {
+    console.log(chalk.cyan('Finished executing the commands'));
     return;
   }
-  console.log(chalk.cyan('Finished executing the commands'));
+
+  var cmd = cmds.shift();
+  if (!cmd.length) {
+    return;
+  }
+
+  let parts = parse(cmd);
+  let spawned = executeCommand(parts[0], parts.splice(1), opts);
+  if (spawned.error) {
+    console.log(chalk.red('Error happened during executing: ') + cmd);
+    console.log(chalk.red('Stopping execution.'));
+    return spawned;
+  }
+
+  console.log(chalk.yellow('Finished: ') + cmd);
+  return exec(cmds, opts) || spawned;
 }
 
 module.exports = exec;

@@ -17,15 +17,15 @@ npm install --save exec-cmds
 ## Usage example
 
 ```js
-var execCmds = require('exec-cmds');
+const execCmds = require('exec-cmds');
 
-var cwd =  path.resolve(process.cwd());
-var cmds = [
+let cwd =  path.resolve(process.cwd());
+let cmds = [
   'mkdir foo',
   'rm -rf foo'
 ];
 execCmds(cmds, {
-  cwd: cwd,
+  cwd,
   env: {
     FOO_BAR: 'Hello world!'
   }
